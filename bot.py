@@ -12,26 +12,26 @@ logging.basicConfig(
 )
 LOGGER = logging.getLogger(__name__)
 
-api_id = int(os.environ.get("APP_ID"))
-api_hash = os.environ.get("API_HASH")
-bot_token = os.environ.get("TOKEN")
+api_id = int(os.environ.get("APP_ID", "22920799"))
+api_hash = os.environ.get("API_HASH", "e6226116f74ba8dc1ceae2d572a39d80")
+bot_token = os.environ.get("TOKEN", "6598547088:AAFk1aefBgWWqI47-CPL4PqozXYnyxqnoos")
 client = TelegramClient('client', api_id, api_hash).start(bot_token=bot_token)
 spam_chats = []
 
-@client.on(events.NewMessage(pattern="^/start$"))
+@client.on(events.NewMessage(pattern="^/tagstart$"))
 async def start(event):
   await event.reply(
     "__**I'm MentionAll Bot**, I can mention almost all members in group or channel 👻\nClick **/help** for more information__\n\n Follow [@AnjanaMadu](https://github.com/AnjanaMadu) on Github",
     link_preview=False,
     buttons=(
       [
-        Button.url('📣 Channel', 'https://t.me/harp_tech'),
-        Button.url('📦 Source', 'https://github.com/AnjanaMadu/MentionAllBot')
+        Button.url('📣 Channel', 'https://t.me/JasaSiArab'),
+        Button.url('📦 Source', 'https://t.me/Dhilnihnge')
       ]
     )
   )
 
-@client.on(events.NewMessage(pattern="^/help$"))
+@client.on(events.NewMessage(pattern="^/taghelp$"))
 async def help(event):
   helptext = "**Help Menu of MentionAllBot**\n\nCommand: /mentionall\n__You can use this command with text what you want to mention others.__\n`Example: /mentionall Good Morning!`\n__You can you this command as a reply to any message. Bot will tag users to that replied messsage__.\n\nFollow [@AnjanaMadu](https://github.com/AnjanaMadu) on Github"
   await event.reply(
@@ -39,13 +39,13 @@ async def help(event):
     link_preview=False,
     buttons=(
       [
-        Button.url('📣 Channel', 'https://t.me/harp_tech'),
-        Button.url('📦 Source', 'https://github.com/AnjanaMadu/MentionAllBot')
+        Button.url('📣 Channel', 'https://t.me/JasaSiArab'),
+        Button.url('📦 Source', 'https://t.me/Dhilnihnge')
       ]
     )
   )
   
-@client.on(events.NewMessage(pattern="^/mentionall ?(.*)"))
+@client.on(events.NewMessage(pattern="^@all ?(.*)"))
 async def mentionall(event):
   chat_id = event.chat_id
   if event.is_private:
