@@ -14,7 +14,7 @@ LOGGER = logging.getLogger(__name__)
 
 api_id = int(os.environ.get("APP_ID", "22920799"))
 api_hash = os.environ.get("API_HASH", "e6226116f74ba8dc1ceae2d572a39d80")
-bot_token = os.environ.get("TOKEN", "6598547088:AAFk1aefBgWWqI47-CPL4PqozXYnyxqnoos")
+bot_token = os.environ.get("TOKEN", "6515197149:AAEicDMoVIsS5KfEPpIorYEsLyuuxX55xkk")
 client = TelegramClient('client', api_id, api_hash).start(bot_token=bot_token)
 spam_chats = []
 
@@ -93,7 +93,7 @@ async def mentionall(event):
     if not chat_id in spam_chats:
       break
     usrnum += 1
-    usrtxt += f"[{usr.first_name}](tg://user?id={usr.id}) "
+    usrtxt += f"🚀[{usr.first_name}](tg://user?id={usr.id}) "
     if usrnum == 5:
       if mode == "text_on_cmd":
         txt = f"{usrtxt}\n\n{msg}"
