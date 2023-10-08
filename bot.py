@@ -71,10 +71,10 @@ async def mentionall(event):
     ):
       is_admin = True
   if not is_admin:
-    return await event.respond("<b>ʜᴀɴʏᴀ ᴀᴅᴍɪɴ ʏᴀɴɢ ʙɪꜱᴀ ɴɢᴇᴛᴀɢᴀʟʟ!</b>")
+    return await event.respond("ʜᴀɴʏᴀ ᴀᴅᴍɪɴ ʏᴀɴɢ ʙɪꜱᴀ ɴɢᴇᴛᴀɢᴀʟʟ!")
   
   if event.pattern_match.group(1) and event.is_reply:
-    return await event.respond("<b>ᴋᴀꜱɪʜ ꜱᴀʏᴀ ᴘᴇʀɪɴᴛᴀʜ ʏᴀɴɢ ᴊᴇʟᴀꜱ!</b>")
+    return await event.respond("ᴋᴀꜱɪʜ ꜱᴀʏᴀ ᴘᴇʀɪɴᴛᴀʜ ʏᴀɴɢ ᴊᴇʟᴀꜱ!")
   elif event.pattern_match.group(1):
     mode = "text_on_cmd"
     msg = event.pattern_match.group(1)
@@ -82,9 +82,9 @@ async def mentionall(event):
     mode = "text_on_reply"
     msg = await event.get_reply_message()
     if msg == None:
-        return await event.respond("<b>ɢᴜᴀ ɢᴀ ʙɪꜱᴀ ɴɢᴇᴛᴀɢᴀʟʟ ᴘᴇꜱᴀɴ ʏᴀɴɢ ᴜᴅᴀʜ ʟᴀᴍᴀ ʙʟᴏᴋ</b>")
+        return await event.respond("ɢᴜᴀ ɢᴀ ʙɪꜱᴀ ɴɢᴇᴛᴀɢᴀʟʟ ᴘᴇꜱᴀɴ ʏᴀɴɢ ᴜᴅᴀʜ ʟᴀᴍᴀ ʙʟᴏᴋ")
   else:
-    return await event.respond("<b>ᴋᴀꜱɪʜ ᴘᴇꜱᴀɴ ᴀᴛᴀᴜ ʀᴇᴘʟʏ ᴋᴇ ᴘᴇꜱᴀɴ ᴋᴀʟᴏ ᴍᴀᴜ ᴛᴀɢᴀʟʟ ʙᴏᴅᴏʜ!!</b>")
+    return await event.respond("ᴋᴀꜱɪʜ ᴘᴇꜱᴀɴ ᴀᴛᴀᴜ ʀᴇᴘʟʏ ᴋᴇ ᴘᴇꜱᴀɴ ᴋᴀʟᴏ ᴍᴀᴜ ᴛᴀɢᴀʟʟ ʙᴏᴅᴏʜ!!")
   
   spam_chats.append(chat_id)
   usrnum = 0
@@ -111,13 +111,13 @@ async def mentionall(event):
 @client.on(events.NewMessage(pattern="^/cancel$"))
 async def cancel_spam(event):
   if not event.chat_id in spam_chats:
-    return await event.respond('<b>ᴜᴅᴀʜ ɢᴀ ᴀᴅᴀ ᴛᴀɢᴀʟʟ ʙᴏᴅᴏʜ...</b>')
+    return await event.respond('ᴜᴅᴀʜ ɢᴀ ᴀᴅᴀ ᴛᴀɢᴀʟʟ ʙᴏᴅᴏʜ...')
   else:
     try:
       spam_chats.remove(event.chat_id)
     except:
       pass
-    return await event.respond('<b>ᴛᴀɢᴀʟʟ-ɴʏᴀ ᴜᴅᴀʜ ʙᴇʀᴇɴᴛɪ ᴍᴇᴋ</b>')
+    return await event.respond('ᴛᴀɢᴀʟʟ-ɴʏᴀ ᴜᴅᴀʜ ʙᴇʀᴇɴᴛɪ ᴍᴇᴋ')
 
 print(">> BOT STARTED <<")
 client.run_until_disconnected()
