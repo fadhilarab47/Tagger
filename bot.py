@@ -14,7 +14,7 @@ LOGGER = logging.getLogger(__name__)
 
 api_id = int(os.environ.get("APP_ID", "22920799"))
 api_hash = os.environ.get("API_HASH", "e6226116f74ba8dc1ceae2d572a39d80")
-bot_token = os.environ.get("TOKEN", "6515197149:AAEicDMoVIsS5KfEPpIorYEsLyuuxX55xkk")
+bot_token = os.environ.get("TOKEN", "6515197149:AAEiSWp0SNt7YL-DsovQk54VYCEPPAHsrOQ")
 client = TelegramClient('client', api_id, api_hash).start(bot_token=bot_token)
 spam_chats = []
 
@@ -49,7 +49,7 @@ async def help(event):
 async def mentionall(event):
   chat_id = event.chat_id
   if event.is_private:
-    return await event.respond("__This command can be use in groups and channels!__")
+    return await event.respond("<b>ᴘᴇʀɪɴᴛᴀʜ ɪɴɪ ᴅᴀᴘᴀᴛ ᴅɪɢᴜɴᴀᴋᴀɴ ᴅᴀʟᴀᴍ ɢʀᴜᴘ ᴅᴀɴ ᴄʜᴀɴɴᴇʟ!!</b>")
   
   is_admin = False
   try:
@@ -71,10 +71,10 @@ async def mentionall(event):
     ):
       is_admin = True
   if not is_admin:
-    return await event.respond("__Only admins can mention all!__")
+    return await event.respond("<b>ʜᴀɴʏᴀ ᴀᴅᴍɪɴ ʏᴀɴɢ ʙɪꜱᴀ ɴɢᴇᴛᴀɢᴀʟʟ!</b>")
   
   if event.pattern_match.group(1) and event.is_reply:
-    return await event.respond("__Give me one argument!__")
+    return await event.respond("<b>ᴋᴀꜱɪʜ ꜱᴀʏᴀ ᴘᴇʀɪɴᴛᴀʜ ʏᴀɴɢ ᴊᴇʟᴀꜱ!</b>")
   elif event.pattern_match.group(1):
     mode = "text_on_cmd"
     msg = event.pattern_match.group(1)
@@ -82,9 +82,9 @@ async def mentionall(event):
     mode = "text_on_reply"
     msg = await event.get_reply_message()
     if msg == None:
-        return await event.respond("__I can't mention members for older messages! (messages which are sent before I'm added to group)__")
+        return await event.respond("<b>ɢᴜᴀ ɢᴀ ʙɪꜱᴀ ɴɢᴇᴛᴀɢᴀʟʟ ᴘᴇꜱᴀɴ ʏᴀɴɢ ᴜᴅᴀʜ ʟᴀᴍᴀ ʙʟᴏᴋ</b>")
   else:
-    return await event.respond("__Reply to a message or give me some text to mention others!__")
+    return await event.respond("<b>ᴋᴀꜱɪʜ ᴘᴇꜱᴀɴ ᴀᴛᴀᴜ ʀᴇᴘʟʏ ᴋᴇ ᴘᴇꜱᴀɴ ᴋᴀʟᴏ ᴍᴀᴜ ᴛᴀɢᴀʟʟ ʙᴏᴅᴏʜ!!</b>")
   
   spam_chats.append(chat_id)
   usrnum = 0
@@ -93,7 +93,7 @@ async def mentionall(event):
     if not chat_id in spam_chats:
       break
     usrnum += 1
-    usrtxt += f"🚀[{usr.first_name}](tg://user?id={usr.id}) "
+    usrtxt += f"🧸[{usr.first_name}](tg://user?id={usr.id}) \n"
     if usrnum == 5:
       if mode == "text_on_cmd":
         txt = f"{usrtxt}\n\n{msg}"
@@ -111,13 +111,13 @@ async def mentionall(event):
 @client.on(events.NewMessage(pattern="^/cancel$"))
 async def cancel_spam(event):
   if not event.chat_id in spam_chats:
-    return await event.respond('__There is no proccess on going...__')
+    return await event.respond('<b>ᴜᴅᴀʜ ɢᴀ ᴀᴅᴀ ᴛᴀɢᴀʟʟ ʙᴏᴅᴏʜ...</b>')
   else:
     try:
       spam_chats.remove(event.chat_id)
     except:
       pass
-    return await event.respond('__Stopped.__')
+    return await event.respond('<b>ᴛᴀɢᴀʟʟ-ɴʏᴀ ᴜᴅᴀʜ ʙᴇʀᴇɴᴛɪ ᴍᴇᴋ</b>')
 
 print(">> BOT STARTED <<")
 client.run_until_disconnected()
